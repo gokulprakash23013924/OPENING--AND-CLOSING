@@ -1,4 +1,6 @@
-# OPENING--AND-CLOSING
+# EX-10 OPENING--AND-CLOSING
+# Name : Gokul prakash m
+# Register Number : 212223240041
 ## Aim
 To implement Opening and Closing using Python and OpenCV.
 
@@ -7,74 +9,83 @@ To implement Opening and Closing using Python and OpenCV.
 2. OpenCV
 ## Algorithm:
 ### Step1:
-<br>
+Import the necessary packages
 
 
 ### Step2:
-<br>
+Create the Text using cv2.putText
 
 ### Step3:
-<br>
+Create the structuring element
 
 ### Step4:
-<br>
+Use Opening operation
 
 ### Step5:
-<br>
+Use Closing Operation
 
  
 ## Program:
+```
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
 
-``` Python
-# Import the necessary packages
+# Step 1: Load the image using cv2.imread()
+image = cv2.imread("Fish.jpg")  
 
+# Step 2: Create a structuring element (5x5 rectangular)
+kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
 
+# Step 3: Use Opening operation (erosion followed by dilation)
+opening_image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
 
-# Create the Text using cv2.putText
+# Step 4: Use Closing operation (dilation followed by erosion)
+closing_image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
 
+# Convert images from BGR to RGB for Matplotlib
+image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+opening_image_rgb = cv2.cvtColor(opening_image, cv2.COLOR_BGR2RGB)
+closing_image_rgb = cv2.cvtColor(closing_image, cv2.COLOR_BGR2RGB)
 
+# Plot the original, opening, and closing images using Matplotlib
+plt.figure(figsize=(10, 5))
 
-# Create the structuring element
+plt.subplot(1, 3, 1)
+plt.imshow(image_rgb)
+plt.title("Original Image")
+plt.axis("off")
 
+plt.subplot(1, 3, 2)
+plt.imshow(opening_image_rgb)
+plt.title("Opening Operation")
+plt.axis("off")
 
+plt.subplot(1, 3, 3)
+plt.imshow(closing_image_rgb)
+plt.title("Closing Operation")
+plt.axis("off")
 
-# Use Opening operation
-
-
-
-
-# Use Closing Operation
-
-
-
-
+plt.tight_layout()
+plt.show()
 
 ```
 ## Output:
 
 ### Display the input Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+![image](https://github.com/user-attachments/assets/c6772ac7-5d88-46ba-9c06-f63c15e3c7ed)
+
 
 ### Display the result of Opening
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+![image](https://github.com/user-attachments/assets/1dc47e42-1357-449e-9d9b-6984ddb666a6)
+
+
 
 ### Display the result of Closing
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+![image](https://github.com/user-attachments/assets/4f0cd2c5-bbdd-4cbc-bf99-ab1bc25001be)
+
+
+
 
 ## Result
 Thus the Opening and Closing operation is used in the image using python and OpenCV.
